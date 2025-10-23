@@ -1,0 +1,16 @@
+# Ignore Node.js modules and package.json files in  in both folders
+/backend/node_modules
+/frontend/node_modules
+/frontend/package-lock.json
+/frontend/package.json
+/backend/package-lock.json
+/backend/package.json
+# Ignore environment files (NEVER push secrets!)
+/backend/.env
+/frontend/.env
+
+# Ignore Mac system files
+.DS_Store
+
+# Ignore Vite build-output folder
+/frontend/dist
