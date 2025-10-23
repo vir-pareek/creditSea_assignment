@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'; // Import the 'useParams' Hook
 import axios from 'axios';
 import ReportDetail from '../components/ReportDetail'; // We'll create this next
 
-const API_URL = 'http://localhost:8000/api';
+const API_URL = 'https://creditsea-assignment-esto.onrender.com/api';
 
 const ReportPage = () => {
   /**

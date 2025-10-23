@@ -20,7 +20,7 @@ const ReportList = ({ reports, refreshReports }) => {
 
   const handleSaveClick = async (id) => {
     try {
-      await axios.put(`http://localhost:8000/api/reports/${id}`, { 
+      await axios.put(`https://creditsea-assignment-esto.onrender.com/api/reports/${id}`, { 
         displayName: newName 
       });
       
@@ -45,7 +45,7 @@ const ReportList = ({ reports, refreshReports }) => {
 
     try {
       // 1. Send the delete request to our new endpoint
-      await axios.delete(`http://localhost:8000/api/reports/${id}`);
+      await axios.delete(`https://creditsea-assignment-esto.onrender.com/api/reports/${id}`);
       
       // 2. Call the refresh function from the parent to get the updated list
       if (refreshReports) {
