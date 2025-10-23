@@ -23,19 +23,16 @@ async function parseXMLReport(xmlBuffer) {
     
     const report = rawJson.INProfileResponse;
 
-    // --- 1. Basic Details [cite: 15-19] ---
-    const applicantDetails = get(report, 'Current_Application.Current_Applicant_Details', {});
+    // --- 1. Basic Details ---
+    const applicantDetails = get(report, 'Current_Application.Current_Application_Details', {});
     const basicDetails = {
-      name: `${get(applicantDetails, 'First_Name', '')} ${get(applicantDetails, 'Last_Name', '')}`.trim(),
-      mobilePhone: get(applicantDetails, 'MobilePhoneNumber'),
-      // PAN is often more reliable from the account holder details
-      // We look in the first account, then the second, as a fallback.
-      pan: get(report, 'CAIS_Account.CAIS_Account_DETAILS.0.CAIS_Holder_ID_Details.0.Income_TAX_PAN') || 
-           get(report, 'CAIS_Account.CAIS_Account_DETAILS.1.CAIS_Holder_ID_Details.0.Income_TAX_PAN'),
+      name: `${get(applicantDetails, 'Current_Applicant_Details.First_Name', '')} ${get(applicantDetails, 'Current_Applicant_Details.Last_Name', '')}`.trim(),
+      mobilePhone: get(applicantDetails, 'Current_Applicant_Details.MobilePhoneNumber'),
+      pan: get(report, 'CAIS_Account.CAIS_Account_DETAILS.0.CAIS_Holder_ID_Details.0.Income_TAX_PAN'),
       creditScore: parseInt(get(report, 'SCORE.BureauScore', 0), 10),
     };
-    
-    // --- 2. Report Summary [cite: 20-28] ---
+
+    // --- 2. Report Summary ---
     const caisSummary = get(report, 'CAIS_Account.CAIS_Summary', {});
     const reportSummary = {
       totalAccounts: parseInt(get(caisSummary, 'Credit_Account.CreditAccountTotal', 0), 10),
@@ -47,7 +44,7 @@ async function parseXMLReport(xmlBuffer) {
       enquiriesLast7Days: parseInt(get(report, 'TotalCAPS_Summary.TotalCAPSLast7Days', 0), 10),
     };
 
-    // --- 3. Credit Accounts Information [cite: 29-35] ---
+    // --- 3. Credit Accounts Information ---
     let accountDetailsList = get(report, 'CAIS_Account.CAIS_Account_DETAILS', []);
     
     // Ensure it's always an array for consistent mapping, even if only one account exists

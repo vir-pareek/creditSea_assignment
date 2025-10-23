@@ -7,12 +7,17 @@ const creditReportSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  displayName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   uploadedAt: {
     type: Date,
     default: Date.now,
   },
-  
-  // Section 1: Basic Details [cite: 15]
+
+  // Section 1: Basic Details
   basicDetails: {
     name: String,
     mobilePhone: String,
@@ -20,7 +25,7 @@ const creditReportSchema = new mongoose.Schema({
     creditScore: Number,
   },
 
-  // Section 2: Report Summary [cite: 20]
+  // Section 2: Report Summary
   reportSummary: {
     totalAccounts: Number,
     activeAccounts: Number,
@@ -31,7 +36,7 @@ const creditReportSchema = new mongoose.Schema({
     enquiriesLast7Days: Number, // TotalCAPSLast7Days
   },
 
-  // Section 3: Credit Accounts Information [cite: 29]
+  // Section 3: Credit Accounts Information 
   // This will be an array of all accounts found in the report
   accounts: [
     {

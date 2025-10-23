@@ -89,7 +89,7 @@ const HomePage = () => {
       {/* Prop Drilling: We "drill" the 'reports' state down
         into the 'ReportList' component as a prop.
       */}
-      <ReportList reports={reports} />
+      <ReportList reports={reports} refreshReports={fetchReports} />
     </div>
   );
 };

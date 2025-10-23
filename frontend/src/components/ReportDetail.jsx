@@ -13,7 +13,7 @@ const DetailItem = ({ label, value }) => (
     </strong>
     <span className="text-xl font-semibold text-blue-800">
       {/* Show 'N/A' if the value is missing or 0 */}
-      {value || 'N/A'} 
+      {value ?? 'N/A'} 
     </span>
   </div>
 );
@@ -51,7 +51,7 @@ const ReportDetail = ({ report }) => {
         </p>
       </div>
 
-      [cite_start]{/* --- Section 1: Basic Details [cite: 15-19] --- */}
+      {/* --- Section 1: Basic Details [cite: 15-19] --- */}
       <section>
         <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b">
           Basic Details
@@ -70,7 +70,7 @@ const ReportDetail = ({ report }) => {
         </div>
       </section>
 
-      [cite_start]{/* --- Section 2: Report Summary [cite: 20-28] --- */}
+      {/* --- Section 2: Report Summary [cite: 20-28] --- */}
       <section>
         <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b">
           Report Summary
@@ -98,7 +98,7 @@ const ReportDetail = ({ report }) => {
         </div>
       </section>
       
-      [cite_start]{/* --- Section 3: Credit Accounts [cite: 29-35] --- */}
+      {/* --- Section 3: Credit Accounts [cite: 29-35] --- */}
       <section>
         <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b">
           Credit Accounts Information
