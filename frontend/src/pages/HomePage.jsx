@@ -4,7 +4,7 @@ import FileUpload from '../components/FileUpload'; // We'll create this next
 import ReportList from '../components/ReportList'; // And this one
 
 // A modern practice is to store API URLs in a constant
-const API_URL = 'https://creditsea-assignment-esto.onrender.com/';
+const API_URL = 'https://creditsea-assignment-esto.onrender.com';
 
 const HomePage = () => {
   /**
