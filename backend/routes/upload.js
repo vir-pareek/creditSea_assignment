@@ -117,7 +117,7 @@ router.get('/reports/:id', async (req, res) => {
     const report = await CreditReport.findById(req.params.id);
     
     if (!report) {
-      return res.status(4404).json({ message: 'Report not found.' });
+      return res.status(404).json({ message: 'Report not found.' });
     }
 
     res.status(200).json(report);
